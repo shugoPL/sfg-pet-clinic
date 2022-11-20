@@ -8,14 +8,17 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>pl.com.shugo</groupId>
     <artifactId>own-pet-clinic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>own-pet-clinic</name>
     <description>own-pet-clinic</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
