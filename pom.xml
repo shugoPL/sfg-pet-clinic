@@ -15,7 +15,7 @@
 
     <groupId>pl.com.shugo</groupId>
     <artifactId>own-pet-clinic</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>own-pet-clinic</name>
     <description>own-pet-clinic</description>
 
@@ -51,7 +51,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/shugoPL/sfg-pet-clinic.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>own-pet-clinic-0.0.1</tag>
     </scm>
 
 </project>
