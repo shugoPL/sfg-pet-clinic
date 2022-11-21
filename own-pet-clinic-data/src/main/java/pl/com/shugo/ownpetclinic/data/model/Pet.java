@@ -1,4 +1,4 @@
-package pl.com.shugo.ownpetclinic.model;
+package pl.com.shugo.ownpetclinic.data.model;
 
 import java.time.LocalDate;
 
