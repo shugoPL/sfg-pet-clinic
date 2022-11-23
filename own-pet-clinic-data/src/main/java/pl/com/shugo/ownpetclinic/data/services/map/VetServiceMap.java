@@ -1,11 +1,11 @@
 package pl.com.shugo.ownpetclinic.data.services.map;
 
 import pl.com.shugo.ownpetclinic.data.model.Vet;
-import pl.com.shugo.ownpetclinic.data.services.CrudService;
+import pl.com.shugo.ownpetclinic.data.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
