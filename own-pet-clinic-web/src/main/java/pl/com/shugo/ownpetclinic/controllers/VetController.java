@@ -1,15 +1,14 @@
-package pl.com.shugo.ownpetclinic.web.controllers;
+package pl.com.shugo.ownpetclinic.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/owners")
+@RequestMapping("/vets")
 @Controller
-public class OwnerController {
+public class VetController {
 
     @RequestMapping({"", "/", "/index", "/index.html"})
-    public String listOwners() {
-        return "owners/index";
+    public String listVets() {
+        return "vets/index";
     }
-
 }

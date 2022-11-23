@@ -1,4 +1,4 @@
-package pl.com.shugo.ownpetclinic.web.controllers;
+package pl.com.shugo.ownpetclinic.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

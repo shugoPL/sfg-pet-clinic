@@ -1,10 +1,12 @@
 package pl.com.shugo.ownpetclinic.data.services.map;
 
+import org.springframework.stereotype.Service;
 import pl.com.shugo.ownpetclinic.data.model.Vet;
 import pl.com.shugo.ownpetclinic.data.services.VetService;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
