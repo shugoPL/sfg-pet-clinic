@@ -1,12 +1,13 @@
 package pl.com.shugo.ownpetclinic.data.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person {
     private String address;
     private String city;
     private String phone;
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {
         return address;
@@ -34,6 +35,11 @@ public class Owner extends Person {
 
     public Set<Pet> getPets() {
         return pets;
+    }
+
+    public void addPet(Pet pet) {
+        if (pet == null) throw new RuntimeException("Pet cannot be null!");
+        pets.add(pet);
     }
 
     public void setPets(Set<Pet> pets) {
