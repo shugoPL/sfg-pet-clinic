@@ -1,9 +1,16 @@
 package pl.com.shugo.ownpetclinic.data.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "vets")
 public class Vet extends Person {
@@ -14,16 +21,9 @@ public class Vet extends Person {
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<Specialty> specialties = new HashSet<>();
 
-    public Set<Specialty> getSpecialties() {
-        return specialties;
-    }
-
     public void addSpecialty(Specialty specialty) {
         if (specialty == null) throw new RuntimeException("Specialty cannot be null");
         specialties.add(specialty);
     }
 
-    public void setSpecialties(Set<Specialty> specialties) {
-        this.specialties = specialties;
-    }
 }

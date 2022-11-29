@@ -1,9 +1,15 @@
 package pl.com.shugo.ownpetclinic.data.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
@@ -18,44 +24,19 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+    @Builder
+    public Owner(Long id, String firstName, String lastName,
+                 String address, String city, String telephone) {
+        super(id, firstName, lastName);
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String phone) {
-        this.telephone = phone;
-    }
-
-    public Set<Pet> getPets() {
-        return pets;
+        this.telephone = telephone;
     }
 
     public void addPet(Pet pet) {
         if (pet == null) throw new RuntimeException("Pet cannot be null!");
         pets.add(pet);
     }
-
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
-
-
 
 
 }
