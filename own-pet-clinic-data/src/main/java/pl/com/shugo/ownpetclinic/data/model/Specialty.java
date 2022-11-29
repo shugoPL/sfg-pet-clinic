@@ -1,8 +1,14 @@
 package pl.com.shugo.ownpetclinic.data.model;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class Specialty extends BaseEntity implements Serializable {
+@Entity
+@Table(name = "specialities" )
+public class Specialty extends BaseEntity {
+
+    @Column(name = "desc")
     private String description;
 
     public String getDescription() {
