@@ -3,10 +3,7 @@ package pl.com.shugo.ownpetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.com.shugo.ownpetclinic.data.model.*;
-import pl.com.shugo.ownpetclinic.data.services.OwnerService;
-import pl.com.shugo.ownpetclinic.data.services.PetTypeService;
-import pl.com.shugo.ownpetclinic.data.services.SpecialityService;
-import pl.com.shugo.ownpetclinic.data.services.VetService;
+import pl.com.shugo.ownpetclinic.data.services.*;
 
 import java.time.LocalDate;
 
@@ -18,14 +15,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
 
-    public DataLoader(OwnerService ownerService, VetService vetService,
-                      PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -86,6 +85,12 @@ public class DataLoader implements CommandLineRunner {
         fionasCat.setPetType(savedCatPetType);
         owner2.addPet(fionasCat);
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+        visitService.save(catVisit);
 
         Owner owner3 = new Owner();
         owner3.setFirstName("Michael");
