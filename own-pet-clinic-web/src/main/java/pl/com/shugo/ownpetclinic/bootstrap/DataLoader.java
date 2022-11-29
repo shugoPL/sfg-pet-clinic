@@ -2,12 +2,10 @@ package pl.com.shugo.ownpetclinic.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pl.com.shugo.ownpetclinic.data.model.Owner;
-import pl.com.shugo.ownpetclinic.data.model.Pet;
-import pl.com.shugo.ownpetclinic.data.model.PetType;
-import pl.com.shugo.ownpetclinic.data.model.Vet;
+import pl.com.shugo.ownpetclinic.data.model.*;
 import pl.com.shugo.ownpetclinic.data.services.OwnerService;
 import pl.com.shugo.ownpetclinic.data.services.PetTypeService;
+import pl.com.shugo.ownpetclinic.data.services.SpecialityService;
 import pl.com.shugo.ownpetclinic.data.services.VetService;
 
 import java.time.LocalDate;
@@ -19,15 +17,37 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+
+    public DataLoader(OwnerService ownerService, VetService vetService,
+                      PetTypeService petTypeService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        int count = petTypeService.findAll().size();
+
+        if (count == 0) {
+            loadData();
+        }
+
+    }
+
+    private void loadData() {
+        Specialty radiology = new Specialty();
+        radiology.setDescription("Radiology");
+        Specialty savedRadiology = specialityService.save(radiology);
+        Specialty surgery = new Specialty();
+        surgery.setDescription("Surgery");
+        Specialty savedSurgery = specialityService.save(surgery);
+        Specialty dentistry = new Specialty();
+        dentistry.setDescription("Dentistry");
+        Specialty savedDentistry = specialityService.save(dentistry);
 
         PetType dog = new PetType();
         dog.setName("dog");
@@ -42,7 +62,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setLastName("Weston");
         owner1.setAddress("123 1sr Street");
         owner1.setCity("Miami");
-        owner1.setPhone("123123123");
+        owner1.setTelephone("123123123");
 
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
@@ -57,7 +77,7 @@ public class DataLoader implements CommandLineRunner {
         owner2.setLastName("Glenanne");
         owner2.setAddress("123 2sr Street");
         owner2.setCity("New York");
-        owner2.setPhone("432123456");
+        owner2.setTelephone("432123456");
 
         Pet fionasCat = new Pet();
         fionasCat.setName("Justcat");
@@ -74,18 +94,18 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded owners....");
 
-
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
+        vet1.getSpecialties().add(savedDentistry);
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Samuel");
         vet2.setLastName("Keathon");
+        vet1.getSpecialties().add(savedSurgery);
         vetService.save(vet2);
 
         System.out.println("Loaded vets....");
-
     }
 }

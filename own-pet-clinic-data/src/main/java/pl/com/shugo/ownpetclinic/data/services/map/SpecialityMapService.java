@@ -1,11 +1,12 @@
 package pl.com.shugo.ownpetclinic.data.services.map;
 
+import org.springframework.stereotype.Service;
 import pl.com.shugo.ownpetclinic.data.model.Specialty;
 import pl.com.shugo.ownpetclinic.data.services.SpecialityService;
 
 import java.util.Set;
 
-
+@Service
 public class SpecialityMapService extends AbstractMapService<Specialty, Long> implements SpecialityService {
 
     @Override

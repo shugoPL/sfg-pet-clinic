@@ -32,7 +32,7 @@
         </button>
         <div class="collapse navbar-collapse" id="main-navbar" style>
 
-            <ul class="navbar-nav ml-auto mb-2 mb-lg-0" th:remove="all">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" th:remove="all">
                 <li th:fragment="menuItem (link,active,title,glyph,text)" th:class="nav-item">
                     <a th:class="${active==menu ? 'nav-link active' : 'nav-link'}" th:href="@{__${link}__}" th:title="${title}">
                         <span th:class="'fa fa-'+${glyph}" class="fa fa-home"></span>
@@ -41,7 +41,7 @@
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav mr-auto">
+            <ul class="nav navbar-nav ml-auto">
                 <li th:replace="~{::menuItem ('/','home','home page','home','Home')}">
                     <span class="fa fa-home" aria-hidden="true"></span>
                     <span>Home</span>
