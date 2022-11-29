@@ -1,5 +1,6 @@
 package pl.com.shugo.ownpetclinic.data.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.com.shugo.ownpetclinic.data.model.Specialty;
 import pl.com.shugo.ownpetclinic.data.model.Vet;
@@ -9,6 +10,7 @@ import pl.com.shugo.ownpetclinic.data.services.VetService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialityService specialityService;

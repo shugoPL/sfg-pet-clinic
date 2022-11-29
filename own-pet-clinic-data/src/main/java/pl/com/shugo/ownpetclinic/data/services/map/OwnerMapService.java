@@ -1,5 +1,6 @@
 package pl.com.shugo.ownpetclinic.data.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.com.shugo.ownpetclinic.data.model.Owner;
 import pl.com.shugo.ownpetclinic.data.model.Pet;
@@ -10,6 +11,7 @@ import pl.com.shugo.ownpetclinic.data.services.PetTypeService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
